@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
  */
 public class ChannelFragment extends Fragment {
 
-  @Bind(R.id.twv_channel) RecyclerView twvChannel;
+  @Bind(R.id.rv_channel) RecyclerView rvChannel;
 
   ChannelAdapter channelAdapter;
 
@@ -40,7 +40,7 @@ public class ChannelFragment extends Fragment {
     ButterKnife.bind(this, view);
 
     channelAdapter = new ChannelAdapter();
-    twvChannel.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
-    twvChannel.setAdapter(channelAdapter);
+    rvChannel.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+    rvChannel.setAdapter(channelAdapter);
   }
 }

@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
   @OnClick(R.id.btn_content)
   void onContentBtnClick() {
+    removeFragment(channelFragment);
     if (contentFragment == null) {
       contentFragment = ContentFragment.newInstance();
     }
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
   @OnClick(R.id.btn_channel)
   void onChannelBtnClick() {
+    removeFragment(contentFragment);
     if (channelFragment == null) {
       channelFragment = ChannelFragment.newInstance();
     }
@@ -57,14 +59,17 @@ public class MainActivity extends AppCompatActivity {
     transaction.commit();
   }
 
-//  /**
-//   * 프래그먼트 넣어주고 제거
-//   * @param fragment
-//   */
-//  private void removeFragment(Fragment fragment) {
-//    transaction.remove(fragment);
-//    transaction.commit();
-//  }
+  /**
+   * 프래그먼트 넣어주고 제거
+   * @param fragment
+   */
+  private void removeFragment(Fragment fragment) {
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentTransaction transaction = fragmentManager.beginTransaction();
+    transaction.replace(R.id.main_fragment, fragment);
+    transaction.remove(fragment);
+    transaction.commit();
+  }
 
   @Override
   public void onBackPressed() {
