@@ -14,20 +14,22 @@
       android:orientation="horizontal"
       >
 
-    <Button
+    <TextView
         android:id="@+id/btn_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="main"
+        android:gravity="center"
         />
 
-    <Button
+    <TextView
         android:id="@+id/btn_channel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="channel"
+        android:gravity="center"
         />
   </LinearLayout>
 

@@ -19,9 +19,12 @@ public class MainActivity extends AppCompatActivity {
 
   @OnClick(R.id.btn_content)
   void onContentBtnClick() {
-    removeFragment(channelFragment);
     if (contentFragment == null) {
       contentFragment = ContentFragment.newInstance();
+    }
+
+    if (channelFragment != null) {
+      removeFragment(channelFragment);
     }
 
     replaceFragment(contentFragment);

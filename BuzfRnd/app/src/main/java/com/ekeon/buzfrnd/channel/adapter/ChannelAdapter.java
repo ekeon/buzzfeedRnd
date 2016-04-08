@@ -6,8 +6,6 @@ import android.view.ViewGroup;
 
 import com.ekeon.buzfrnd.channel.hodler.ChannelGridHolder;
 
-import org.lucasr.twowayview.TwoWayView;
-
 
 /**
  * Created by Ekeon on 2016. 3. 18..
