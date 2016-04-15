@@ -1,17 +1,12 @@
 package com.ekeon.buzfrnd.content.hodler;
 
 import android.content.Context;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.ekeon.buzfrnd.R;
-import com.ekeon.buzfrnd.RxBus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

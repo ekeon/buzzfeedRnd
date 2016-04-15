@@ -23,6 +23,11 @@
         android:text="1"
         android:layout_gravity="center"/>
 
+    <com.ekeon.buzfrnd.VideoView.TvVideoView
+        android:id="@+id/vv_video"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:visibility="gone"/>
   </FrameLayout>
 
 

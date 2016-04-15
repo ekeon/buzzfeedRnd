@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.ekeon.buzfrnd.content.hodler.ContentTitleHolder;
 import com.ekeon.buzfrnd.content.hodler.ContentVideoHolder;
-import com.ekeon.buzfrnd.model.ContentModel;
+import com.ekeon.buzfrnd.content.model.ContentModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,17 @@ public class ContentAdapter extends RecyclerView.Adapter {
   private final int TYPE_TITLE = 0;
   private final int TYPE_VIDEO = 1;
 
+  private int videoPosition;
+  private int playPosition = 0;
+
   private List<ContentModel> list = new ArrayList<>();
 
   public void addAll(List<ContentModel> list) {
     this.list.addAll(list);
+  }
+
+  public int getVideoPosition() {
+    return videoPosition;
   }
 
   @Override
@@ -44,18 +51,24 @@ public class ContentAdapter extends RecyclerView.Adapter {
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     if (holder instanceof ContentTitleHolder) {
-      ((ContentTitleHolder) holder).setText("" + position/2);
+      ((ContentTitleHolder) holder).setText("" + (position / 2));
     }
 
     if (holder instanceof ContentVideoHolder) {
-      ((ContentVideoHolder) holder).setText(position/2);
+      ((ContentVideoHolder) holder).setText(position / 2);
+      if (position / 2 == playPosition) {
+        ((ContentVideoHolder) holder).setVideo();
+      }
     }
+  }
 
+  public void setPlayVideoPostion(int playPosition) {
+    this.playPosition = playPosition;
   }
 
   @Override
   public int getItemCount() {
-    return list.size()*2;
+    return list.size() * 2;
   }
 
   @Override

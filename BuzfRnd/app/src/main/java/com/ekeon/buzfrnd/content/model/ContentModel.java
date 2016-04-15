@@ -1,4 +1,4 @@
-package com.ekeon.buzfrnd.model;
+package com.ekeon.buzfrnd.content.model;
 
 /**
  * Created by Ekeon on 2016. 3. 22..
