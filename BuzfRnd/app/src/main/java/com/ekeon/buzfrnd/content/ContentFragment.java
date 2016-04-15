@@ -32,7 +32,7 @@ import butterknife.OnClick;
 public class ContentFragment extends Fragment implements ScrollManager {
 
   @Bind(R.id.rv_content) RecyclerView rvContent;
-  private LinearLayoutManager rvContentManager = (LinearLayoutManager) rvContent.getLayoutManager();
+  private LinearLayoutManager rvContentManager;
 
   List<ContentModel> contentList = new ArrayList<>();
 
@@ -71,26 +71,27 @@ public class ContentFragment extends Fragment implements ScrollManager {
     setDummyContent();
     setAdapter();
     setRecycleView();
-    ((LinearLayoutManager) rvContent.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
   }
 
   private void setRecycleView() {
-    rvContent.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
+    rvContent.setLayoutManager(new LinearLayoutManager(this.getContext()));
     rvContent.setAdapter(contentAdapter);
     rvContent.addOnScrollListener(scrollListener);
+    rvContentManager = (LinearLayoutManager) rvContent.getLayoutManager();
   }
 
   private void getRecyclerViewMiddlePosition() {
-    rvContentManager.findLastCompletelyVisibleItemPosition();
-    rvContentManager.findFirstCompletelyVisibleItemPosition();
-    Log.d("TAG", "first : " + rvContentManager.findLastCompletelyVisibleItemPosition());
-    Log.d("TAG", "last : " + rvContentManager.findFirstCompletelyVisibleItemPosition());
+//    rvContentManager.findLastCompletelyVisibleItemPosition();
+//    rvContentManager.findFirstCompletelyVisibleItemPosition();
+    Log.d("TAG", "first : " + rvContentManager.findFirstCompletelyVisibleItemPosition());
+    Log.d("TAG", "last : " + rvContentManager.findLastCompletelyVisibleItemPosition());
   }
 
   private RecyclerView.OnScrollListener scrollListener = new RecyclerView.OnScrollListener() {
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
       super.onScrolled(recyclerView, dx, dy);
+      getRecyclerViewMiddlePosition();
       if (dy > 0) {
         rvScrollState = RvScrollState.DOWN;
       } else {
